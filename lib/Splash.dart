@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linclass/Login.dart';
 import 'package:linclass/main.dart';
 import 'package:splashscreen/splashscreen.dart';
 class Splash extends StatefulWidget{
@@ -15,9 +16,9 @@ class SplashForm extends State<Splash>{
     // TODO: implement build
     return MaterialApp(
       home: SplashScreen(
-        seconds: 3,
+        seconds: 5,
         image: Image.network("https://raw.githubusercontent.com/KeruMx/LincHub/paginasDinamicas/images/LincHub.png"),
-//        navigateAfterSeconds: Cursos(),
+        navigateAfterSeconds: Login(),
         title: Text("Bienvenido a LinClass",
         style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
         ),
