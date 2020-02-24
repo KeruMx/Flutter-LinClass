@@ -3,7 +3,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import 'Login.dart';
 import 'Splash.dart';
+import 'dashboard.dart';
 
 void main()=>runApp(Splash());
 
@@ -43,9 +45,9 @@ class CursosForm extends State<Cursos>{
   Widget build(BuildContext context){
     return MaterialApp(
       routes: {
-//        '/login'  : (context)=>Login(),
-//        '/dash'   : (context)=>Dashboard(),
-//        '/course' : (context)=>Course()
+        '/login'  : (context)=>Login(),
+        '/dash'   : (context)=>Dashboard(),
+        '/course' : (context)=>Cursos()
       },
       home: Scaffold(
         appBar: AppBar(
