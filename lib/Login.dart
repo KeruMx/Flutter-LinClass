@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'dashboard.dart';
 class Login extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -38,8 +40,8 @@ class Login extends StatelessWidget{
 //          var codigo = await validateUser();
           //print(codigo);
 //          if( codigo == 200 ){
-//            //Navigator.push(context, MaterialPageRoute(builder:(context)=>Dashboard()));
-            Navigator.pushReplacementNamed(context, '/dash');
+            Navigator.push(context, MaterialPageRoute(builder:(context)=>Dashboard()));
+//            Navigator.pushReplacementNamed(context, "/course");
 //          }else{
 //            showDialog(
 //                context: context,
@@ -84,6 +86,8 @@ class Login extends StatelessWidget{
               SizedBox(height: 30),
               txtPwd,
               SizedBox(height: 30),
+              loginButton,
+
             ],
           ),
         ),

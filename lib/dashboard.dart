@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linclass/main.dart';
 
 class Dashboard extends StatelessWidget{
   @override
@@ -25,7 +26,8 @@ class Dashboard extends StatelessWidget{
                 leading: Icon(Icons.golf_course),
                 trailing: Icon(Icons.arrow_right),
                 onTap: (){
-                  Navigator.pushNamed(context, '/course');
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=>Cursos()));
+//                  Navigator.pushNamed(context, '/course');
                 },
               )
             ],
