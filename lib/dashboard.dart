@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:linclass/main.dart';
+import 'package:linclass/Cursos.dart';
 
 class Dashboard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
+
       home: Scaffold(
         appBar: AppBar(
           title: Text("Dasboard"),

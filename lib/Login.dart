@@ -1,12 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'dashboard.dart';
-class Login extends StatelessWidget{
+
+
+class Login extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return LoginState();
+  }
+}
+
+class LoginState extends State<Login>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     final txtUserController = TextEditingController();
     final txtPwdController = TextEditingController();
+    final txtUsuario = TextEditingController();
+    final txtContrasena = TextEditingController();
+    bool recordarLogin = false;
+
+    loggued() async{
+      var logueado;
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      logueado = prefs.getBool("logueado") ?? false;
+      if (logueado)
+        Navigator.pushReplacementNamed(context, '/dash');
+    }
+
     final logo = CircleAvatar(
       radius: 45.0,
       child: Image.network("https://dms.com.pe/wp-content/uploads/2017/02/acceso-web.png"),
@@ -40,8 +63,8 @@ class Login extends StatelessWidget{
 //          var codigo = await validateUser();
           //print(codigo);
 //          if( codigo == 200 ){
-            Navigator.push(context, MaterialPageRoute(builder:(context)=>Dashboard()));
-//            Navigator.pushReplacementNamed(context, "/course");
+//            Navigator.push(context, MaterialPageRoute(builder:(context)=>Dashboard()));
+            Navigator.pushReplacementNamed(context, "/dash");
 //          }else{
 //            showDialog(
 //                context: context,
@@ -68,6 +91,25 @@ class Login extends StatelessWidget{
       ),
     );
 
+    final recordarInicioSesionTXT = Text(
+      "Recordar inicio de sesión",
+      style: TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: 15.0,
+        color: Color.fromARGB(255, 33, 37, 41),
+      ),
+    );
+
+    final chkbxInicioSesion = Checkbox(
+      value: recordarLogin,
+      onChanged: (bool resp){
+        setState(() {
+          recordarLogin = resp;
+        });
+      },
+      activeColor: Color.fromARGB(255, 33, 37, 41),
+    );
+
     return MaterialApp(
 
       home:  Scaffold(
@@ -86,8 +128,14 @@ class Login extends StatelessWidget{
               SizedBox(height: 30),
               txtPwd,
               SizedBox(height: 30),
-              loginButton,
-
+              new Row(
+                children: <Widget>[
+                  chkbxInicioSesion,
+                  recordarInicioSesionTXT
+                ],
+              ),
+              SizedBox(height: 15.0),
+              loginButton
             ],
           ),
         ),
