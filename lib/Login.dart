@@ -18,8 +18,6 @@ class LoginState extends State<Login>{
     // TODO: implement build
     final txtUserController = TextEditingController();
     final txtPwdController = TextEditingController();
-    final txtUsuario = TextEditingController();
-    final txtContrasena = TextEditingController();
     bool recordarLogin = false;
 
     loggued() async{
@@ -29,7 +27,9 @@ class LoginState extends State<Login>{
       if (logueado)
         Navigator.pushReplacementNamed(context, '/dash');
     }
-
+    LoginState(){
+      loggued();
+    }
     final logo = CircleAvatar(
       radius: 45.0,
       child: Image.network("https://dms.com.pe/wp-content/uploads/2017/02/acceso-web.png"),
@@ -110,9 +110,7 @@ class LoginState extends State<Login>{
       activeColor: Color.fromARGB(255, 33, 37, 41),
     );
 
-    return MaterialApp(
-
-      home:  Scaffold(
+    return Scaffold(
 //        appBar: AppBar(
 //          title: Text("Log-in"),
 //          backgroundColor: Colors.lightGreen,
@@ -139,8 +137,7 @@ class LoginState extends State<Login>{
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 
 }
